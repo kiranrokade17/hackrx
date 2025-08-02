@@ -1,0 +1,118 @@
+{
+    "info": {
+        "name": "LLM Document Q&A API",
+        "description": "Test collection for your document Q&A API with Gemini 1.5 Flash",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8003/health",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8003",
+                    "path": ["health"]
+                }
+            }
+        },
+        {
+            "name": "Root Endpoint",
+            "request": {
+                "method": "GET", 
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8003/",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8003",
+                    "path": [""]
+                }
+            }
+        },
+        {
+            "name": "Test Kiran Resume",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization", 
+                        "value": "Bearer api_key_1"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"documents\": \"D:/document/resume kiran.pdf\",\n    \"questions\": [\n        \"What skills does Kiran Rokade have?\",\n        \"What is Kiran's educational background?\",\n        \"What work experience does Kiran have?\",\n        \"What is Kiran's current job role?\"\n    ]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8003/hackrx/run",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8003", 
+                    "path": ["hackrx", "run"]
+                }
+            }
+        },
+        {
+            "name": "Test Single Question",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer api_key_1"
+                    }
+                ],
+                "body": {
+                    "mode": "raw", 
+                    "raw": "{\n    \"documents\": \"D:/document/resume kiran.pdf\",\n    \"questions\": [\n        \"What programming languages does this person know?\"\n    ]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8003/hackrx/run",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8003",
+                    "path": ["hackrx", "run"]
+                }
+            }
+        },
+        {
+            "name": "Test Insurance Policy (URL)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer api_key_1"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"documents\": \"https://hackrx.blob.core.windows.net/assets/policy.pdf?sv=2023-01-03&st=2025-07-04T09%3A11%3A24Z&se=2027-07-05T09%3A11%3A00Z&sr=b&sp=r&sig=N4a9OU0w0QXO6AOIBiu4bpl7AXvEZogeT%2FjUHNO7HzQ%3D\",\n    \"questions\": [\n        \"What is the grace period for premium payment?\"\n    ]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8003/hackrx/run",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8003",
+                    "path": ["hackrx", "run"]
+                }
+            }
+        }
+    ]
+}

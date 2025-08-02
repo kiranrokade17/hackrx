@@ -1,0 +1,146 @@
+{
+  "info": {
+    "name": "Document Q&A - Batch Processing Tests",
+    "description": "Test collection for new batch processing functionality - ONE API call for multiple questions",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8003/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8003",
+          "path": ["health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Batch Processing - Resume Analysis (5 Questions)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer api_key_1"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"documents\": \"D:/document/resume kiran.pdf\",\n    \"questions\": [\n        \"What skills does Kiran have?\",\n        \"What is his education?\",\n        \"What work experience does he have?\",\n        \"What programming languages does he know?\",\n        \"What projects has he worked on?\"\n    ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8003/hackrx/run",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8003",
+          "path": ["hackrx", "run"]
+        },
+        "description": "Tests batch processing with 5 questions about a resume. Uses only 1 API call instead of 5."
+      },
+      "response": []
+    },
+    {
+      "name": "Batch Processing - Small Test (3 Questions)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer api_key_1"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"documents\": \"D:/document/resume kiran.pdf\",\n    \"questions\": [\n        \"What is the candidate's name?\",\n        \"What is their highest education?\",\n        \"How many years of experience do they have?\"\n    ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8003/hackrx/run",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8003",
+          "path": ["hackrx", "run"]
+        },
+        "description": "Small batch test with 3 basic questions. Uses only 1 API call."
+      },
+      "response": []
+    },
+    {
+      "name": "Batch Processing - Large Test (10 Questions)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer api_key_1"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"documents\": \"D:/document/resume kiran.pdf\",\n    \"questions\": [\n        \"What is the candidate's name and contact information?\",\n        \"What is their highest level of education?\",\n        \"What programming languages do they know?\",\n        \"What frameworks and technologies have they used?\",\n        \"How many years of total work experience do they have?\",\n        \"What projects have they worked on?\",\n        \"What are their key technical skills?\",\n        \"What soft skills do they possess?\",\n        \"What certifications do they have?\",\n        \"What is their career objective or summary?\"\n    ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8003/hackrx/run",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8003",
+          "path": ["hackrx", "run"]
+        },
+        "description": "Large batch test with 10 comprehensive questions. Uses only 1 API call instead of 10!"
+      },
+      "response": []
+    },
+    {
+      "name": "Single Question (For Comparison)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer api_key_1"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"documents\": \"D:/document/resume kiran.pdf\",\n    \"questions\": [\n        \"What is the candidate's name?\"\n    ]\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8003/hackrx/run",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8003",
+          "path": ["hackrx", "run"]
+        },
+        "description": "Single question for comparison with batch processing."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8003"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "llm-query-retrieval-api",
+  "version": "1.0.0",
+  "description": "LLM-Powered Intelligent Query-Retrieval System for Document Processing",
+  "main": "main.py",
+  "scripts": {
+    "start": "uvicorn main:app --host 0.0.0.0 --port 8000 --reload",
+    "test": "pytest",
+    "dev": "uvicorn main:app --reload"
+  },
+  "keywords": [
+    "llm",
+    "fastapi",
+    "document-processing",
+    "vector-search",
+    "insurance",
+    "compliance"
+  ],
+  "author": "API Developer",
+  "license": "MIT",
+  "dependencies": {
+    "python": "^3.9"
+  }
+}
