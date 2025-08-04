@@ -1,0 +1,297 @@
+{
+  "info": {
+    "name": "HackRX Document Q&A API - Complete Collection",
+    "description": "Complete API collection for testing document Q&A functionality with batch processing",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "2.1.0"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8005",
+      "description": "API base URL"
+    },
+    {
+      "key": "api_key",
+      "value": "fcafc493f46a84b082decd38f0e64525e9992934678ffbdf2ee400b6f9afdb8a",
+      "description": "API authentication key"
+    },
+    {
+      "key": "resume_file",
+      "value": "file:///D:/document/Ashish_Resume_final.pdf",
+      "description": "Local resume file path"
+    },
+    {
+      "key": "insurance_policy_url",
+      "value": "https://hackrx.blob.core.windows.net/assets/policy.pdf?sv=2023-01-03&st=2025-07-04T09%3A11%3A24Z&se=2027-07-05T09%3A11%3A00Z&sr=b&sp=r&sig=N4a9OU0w0QXO6AOIBiu4bpl7AXvEZogeT%2FjUHNO7HzQ%3D",
+      "description": "Insurance policy PDF URL"
+    }
+  ],
+  "item": [
+    {
+      "name": "🔍 Health & Status Checks",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            },
+            "description": "Check API health and Gemini status"
+          },
+          "response": []
+        },
+        {
+          "name": "Root Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            },
+            "description": "Get API information and features"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "📄 Resume Analysis",
+      "item": [
+        {
+          "name": "Single Question - Resume",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"{{resume_file}}\",\n  \"questions\": [\n    \"What is the candidate's name and current position?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/hackrx/run",
+              "host": ["{{base_url}}"],
+              "path": ["hackrx", "run"]
+            },
+            "description": "Test with single question about resume"
+          },
+          "response": []
+        },
+        {
+          "name": "Multiple Questions - Resume",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"{{resume_file}}\",\n  \"questions\": [\n    \"What is the candidate's name and current position?\",\n    \"What are the main technical skills mentioned?\",\n    \"What is the candidate's educational background?\",\n    \"What companies has this person worked for?\",\n    \"What programming languages does the candidate know?\",\n    \"What are the candidate's key achievements?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/hackrx/run",
+              "host": ["{{base_url}}"],
+              "path": ["hackrx", "run"]
+            },
+            "description": "Test batch processing with multiple resume questions"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🏥 Insurance Policy Analysis",
+      "item": [
+        {
+          "name": "Insurance Policy Questions",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"{{insurance_policy_url}}\",\n  \"questions\": [\n    \"What is the grace period for premium payment under the National Parivar Mediclaim Plus Policy?\",\n    \"What is the waiting period for pre-existing diseases (PED) to be covered?\",\n    \"Does this policy cover maternity expenses, and what are the conditions?\",\n    \"What is the waiting period for cataract surgery?\",\n    \"Are the medical expenses for an organ donor covered under this policy?\",\n    \"What is the No Claim Discount (NCD) offered in this policy?\",\n    \"Is there a benefit for preventive health check-ups?\",\n    \"How does the policy define a 'Hospital'?\",\n    \"What is the extent of coverage for AYUSH treatments?\",\n    \"Are there any sub-limits on room rent and ICU charges for Plan A?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/hackrx/run",
+              "host": ["{{base_url}}"],
+              "path": ["hackrx", "run"]
+            },
+            "description": "Test with insurance policy document - 10 questions in ONE API call"
+          },
+          "response": []
+        },
+        {
+          "name": "Insurance Policy - Short Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"{{insurance_policy_url}}\",\n  \"questions\": [\n    \"What is the grace period for premium payment?\",\n    \"What is the waiting period for pre-existing diseases?\",\n    \"Does this policy cover maternity expenses?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/hackrx/run",
+              "host": ["{{base_url}}"],
+              "path": ["hackrx", "run"]
+            },
+            "description": "Quick test with 3 insurance questions"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🧪 Authentication Tests",
+      "item": [
+        {
+          "name": "Invalid API Key Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer invalid_key_123"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"{{resume_file}}\",\n  \"questions\": [\n    \"What is the candidate's name?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/hackrx/run",
+              "host": ["{{base_url}}"],
+              "path": ["hackrx", "run"]
+            },
+            "description": "Test authentication with invalid API key (should return 401)"
+          },
+          "response": []
+        },
+        {
+          "name": "Missing Authorization Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"{{resume_file}}\",\n  \"questions\": [\n    \"What is the candidate's name?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/hackrx/run",
+              "host": ["{{base_url}}"],
+              "path": ["hackrx", "run"]
+            },
+            "description": "Test without authorization header (should return 401)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🔬 Edge Cases & Error Testing",
+      "item": [
+        {
+          "name": "Invalid Document Path",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"file:///invalid/path/document.pdf\",\n  \"questions\": [\n    \"What is this document about?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/hackrx/run",
+              "host": ["{{base_url}}"],
+              "path": ["hackrx", "run"]
+            },
+            "description": "Test with invalid document path"
+          },
+          "response": []
+        },
+        {
+          "name": "Empty Questions Array",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"{{resume_file}}\",\n  \"questions\": []\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/hackrx/run",
+              "host": ["{{base_url}}"],
+              "path": ["hackrx", "run"]
+            },
+            "description": "Test with empty questions array"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
