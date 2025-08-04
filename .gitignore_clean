@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temp files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Development files
+test_*.py
+debug_*.py
+*_test.py
+*_debug.py
+comprehensive_test.py
+final_api_verification.py
+
+# Documentation drafts
+*_GUIDE.md
+*_EXPLANATION.md
+*_SUMMARY.md
+API_Test_*.json
+Batch_Processing_*.json
+
+# PowerShell scripts
+*.ps1
+
+# Multiple API versions
+advanced_document_api.py
+advanced_document_api_v3.py
+simple_api.py
+main_integrated.py
+startup.py
+
+# Config files
+package.json
+docker-compose.yml
