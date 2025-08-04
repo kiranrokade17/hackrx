@@ -42,9 +42,6 @@ class QueryRequest(BaseModel):
 
 class QueryResponse(BaseModel):
     answers: List[str]
-    status: str = "success"
-    document_info: Optional[dict] = None
-    api_calls_used: int = 1  # Track API efficiency
 
 # Global AI model
 gemini_model = None
@@ -327,10 +324,7 @@ async def process_documents(
         logger.info(f"Successfully processed {len(request.questions)} questions using BATCH processing")
         
         return QueryResponse(
-            answers=answers,
-            status="success",
-            document_info=doc_info,
-            api_calls_used=1  # Only 1 API call used for all questions!
+            answers=answers
         )
         
     except HTTPException:
