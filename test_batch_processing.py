@@ -7,18 +7,18 @@ def test_batch_processing():
     
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer api_key_1"
+        "Authorization": "Bearer fcafc493f46a84b082decd38f0e64525e9992934678ffbdf2ee400b6f9afdb8a"
     }
     
     # Test with multiple questions (will use 1 API call instead of 5)
     body = {
-        "documents": "D:/document/resume kiran.pdf",
+        "documents": "https://hackrx.blob.core.windows.net/assets/policy.pdf?sv=2023-01-03&st=2025-07-04T09%3A11%3A24Z&se=2027-07-05T09%3A11%3A00Z&sr=b&sp=r&sig=N4a9OU0w0QXO6AOIBiu4bpl7AXvEZogeT%2FjUHNO7HzQ%3D",
         "questions": [
-            "What skills does Kiran have?",
-            "What is his education?", 
-            "What work experience does he have?",
-            "What programming languages does he know?",
-            "What projects has he worked on?"
+            "What is the grace period for premium payment?",
+            "What is the waiting period for pre-existing diseases?",
+            "Does this policy cover maternity expenses?",
+            "What is the No Claim Discount offered?",
+            "What is the waiting period for cataract surgery?"
         ]
     }
     
@@ -33,7 +33,7 @@ def test_batch_processing():
     
     try:
         response = requests.post(
-            "http://localhost:8003/hackrx/run",
+            "http://localhost:8006/hackrx/run",
             headers=headers,
             json=body,
             timeout=60
