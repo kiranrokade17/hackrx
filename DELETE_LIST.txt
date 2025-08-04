@@ -1,0 +1,58 @@
+# Files to DELETE for clean production structure
+
+## Test Files (Remove all):
+- comprehensive_test.py
+- debug_response.py
+- final_api_verification.py
+- test_*.py (all test files)
+- fresh_api_test.py
+- quick_test.py
+- simple_test.py
+
+## PowerShell Scripts (Remove all):
+- *.ps1 (all PowerShell files)
+- cleanup_for_sharing.ps1
+- debug_*.ps1
+- test_*.ps1
+- format_*.ps1
+- simple_*.ps1
+
+## Extra Documentation (Remove):
+- API_TEST_GUIDE.md
+- CLEANUP_GUIDE.md
+- JSON_ERROR_*.md
+- POSTMAN_*.md
+- RAG_IMPLEMENTATION_SUMMARY.md
+- RATE_LIMIT_EXPLANATION.md
+
+## Duplicate API Files (Remove):
+- advanced_api.py
+- advanced_document_api.py (keep v2 only)
+- advanced_document_api_v3.py
+- simple_api.py
+- main.py
+- main_integrated.py
+- startup.py
+
+## Postman Collections (Remove extra):
+- API_Test_Collection.postman_collection.json
+- Batch_Processing_Tests.postman_collection.json
+- Postman_Collection_HackRX_APIs.json
+(Keep only: HackRX_Document_QA_API_Postman_Collection.json)
+
+## Config Files (Remove):
+- package.json
+- docker-compose.yml
+- config.py
+
+## Directories (Remove):
+- models/
+- services/
+- utils/
+- tests/
+- __pycache__/
+- .vscode/
+
+## Other Files (Remove):
+- start.bat
+- setup.ps1

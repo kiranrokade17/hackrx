@@ -1,0 +1,20 @@
+# Files to KEEP for production
+
+## Core Application:
+✅ advanced_document_api_v2.py (rename to main.py)
+✅ requirements.txt (clean version)
+✅ .env (your current config)
+✅ README.md (simplified version)
+
+## Git & Deployment:
+✅ .gitignore (updated)
+✅ Dockerfile (create new)
+✅ render.yaml (create new)  
+✅ runtime.txt (create new)
+
+## Documentation (Optional):
+✅ COMPLETE_POSTMAN_GUIDE.md (rename to POSTMAN_GUIDE.md)
+✅ HackRX_Document_QA_API_Postman_Collection.json (rename to api.postman_collection.json)
+
+## Templates:
+✅ .env.example (create from .env)
