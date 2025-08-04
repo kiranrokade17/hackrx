@@ -1,0 +1,259 @@
+{
+  "info": {
+    "name": "HackRX Document Q&A APIs",
+    "description": "Complete collection for testing both Main API and Advanced Document APIs",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url_main",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "base_url_advanced",
+      "value": "http://localhost:8005"
+    },
+    {
+      "key": "api_key",
+      "value": "fcafc493f46a84b082decd38f0e64525e9992934678ffbdf2ee400b6f9afdb8a"
+    }
+  ],
+  "item": [
+    {
+      "name": "Main API (RAG-based)",
+      "item": [
+        {
+          "name": "Health Check - Main API",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url_main}}/health",
+              "host": ["{{base_url_main}}"],
+              "path": ["health"]
+            }
+          }
+        },
+        {
+          "name": "Root Endpoint - Main API",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url_main}}/",
+              "host": ["{{base_url_main}}"],
+              "path": [""]
+            }
+          }
+        },
+        {
+          "name": "Process Document Query - Main API",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"file:///D:/document/Ashish_Resume_final.pdf\",\n  \"questions\": [\n    \"What is the candidate's name and current position?\",\n    \"What are the main technical skills mentioned?\",\n    \"What is the educational background?\",\n    \"What companies has this person worked for?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url_main}}/hackrx/run",
+              "host": ["{{base_url_main}}"],
+              "path": ["hackrx", "run"]
+            }
+          }
+        },
+        {
+          "name": "Query History - Main API",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url_main}}/queries/history?limit=5",
+              "host": ["{{base_url_main}}"],
+              "path": ["queries", "history"],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Advanced API (Direct AI)",
+      "item": [
+        {
+          "name": "Health Check - Advanced API",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url_advanced}}/health",
+              "host": ["{{base_url_advanced}}"],
+              "path": ["health"]
+            }
+          }
+        },
+        {
+          "name": "Root Endpoint - Advanced API",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url_advanced}}/",
+              "host": ["{{base_url_advanced}}"],
+              "path": [""]
+            }
+          }
+        },
+        {
+          "name": "Process Document Query - Advanced API",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"file:///D:/document/Ashish_Resume_final.pdf\",\n  \"questions\": [\n    \"What is the candidate's name and current position?\",\n    \"What are the main technical skills mentioned?\",\n    \"What is the educational background?\",\n    \"What companies has this person worked for?\",\n    \"What programming languages does this candidate know?\",\n    \"What are the key achievements or projects?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url_advanced}}/hackrx/run",
+              "host": ["{{base_url_advanced}}"],
+              "path": ["hackrx", "run"]
+            }
+          }
+        },
+        {
+          "name": "Test with URL Document - Advanced API",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf\",\n  \"questions\": [\n    \"What is this document about?\",\n    \"What is the main content?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url_advanced}}/hackrx/run",
+              "host": ["{{base_url_advanced}}"],
+              "path": ["hackrx", "run"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Test Cases",
+      "item": [
+        {
+          "name": "Single Question Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"file:///D:/document/Ashish_Resume_final.pdf\",\n  \"questions\": [\n    \"What is the candidate's name?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url_advanced}}/hackrx/run",
+              "host": ["{{base_url_advanced}}"],
+              "path": ["hackrx", "run"]
+            }
+          }
+        },
+        {
+          "name": "Multiple Questions Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{api_key}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"file:///D:/document/Ashish_Resume_final.pdf\",\n  \"questions\": [\n    \"What is the candidate's current job title?\",\n    \"Which programming languages does the candidate know?\",\n    \"What is the candidate's educational qualification?\",\n    \"How many years of experience does the candidate have?\",\n    \"What are the candidate's key technical skills?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url_advanced}}/hackrx/run",
+              "host": ["{{base_url_advanced}}"],
+              "path": ["hackrx", "run"]
+            }
+          }
+        },
+        {
+          "name": "Invalid API Key Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer invalid_key_123"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": \"file:///D:/document/Ashish_Resume_final.pdf\",\n  \"questions\": [\n    \"What is the candidate's name?\"\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url_advanced}}/hackrx/run",
+              "host": ["{{base_url_advanced}}"],
+              "path": ["hackrx", "run"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
